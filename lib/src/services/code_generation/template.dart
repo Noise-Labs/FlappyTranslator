@@ -25,10 +25,12 @@ class #CLASS_NAME# {
   final Locale _locale;
 
   static #CLASS_NAME# of(BuildContext context) => 
-    Localizations.of<#CLASS_NAME#>(context, #CLASS_NAME#)!;
+    Localizations.of<#CLASS_NAME#>(context, #CLASS_NAME#);
 
   String _getText(String key) =>
     _localizedValues[key] ?? '** \$key not found';
+  
+  String getText(String key) => _getText(key);
 
   Locale get currentLocale => _locale;
 
@@ -41,7 +43,7 @@ class #CLASS_NAME# {
     _localizedValues = {};
   }
 
-  static late Locale _locale;
+  static  Locale _locale;
 
   static String _getText(String key) =>
     _localizedValues[key] ?? '** \$key not found';
@@ -92,7 +94,7 @@ class #CLASS_NAME# {
 
   static Future<#CLASS_NAME#> load(Locale locale) async {
     final translations = #CLASS_NAME#(locale);
-    _localizedValues = _allValues[locale.toString()]!;
+    _localizedValues = _allValues[locale.toString()];
     return translations;
   }
 }
